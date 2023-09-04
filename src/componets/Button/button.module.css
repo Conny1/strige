@@ -1,0 +1,10 @@
+.linkBtn {
+  background-color: #4fb67d;
+  width: fit-content;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  font-size: 12px;
+}
