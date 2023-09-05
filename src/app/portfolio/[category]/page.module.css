@@ -1,0 +1,59 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+.main h3 {
+  width: 90%;
+  text-align: start;
+  margin-top: -40px;
+  color: #5ac489;
+}
+
+.container2 {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.porfolio {
+  display: flex;
+  justify-content: space-between;
+}
+.porfolio:nth-child(2n) {
+  flex-direction: row-reverse;
+}
+
+.info {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.info button {
+  background-color: #4fb67d;
+  width: fit-content;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  font-size: 12px;
+  border: none;
+  cursor: pointer;
+}
+
+.imageContainer {
+  width: 50%;
+  height: 300px;
+  /* outline: 1px solid red; */
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

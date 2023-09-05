@@ -1,0 +1,35 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+}
+
+.imageContainer {
+  width: 90%;
+  height: 300px;
+  position: relative;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.aboutInfo {
+  display: flex;
+  gap: 10px;
+  width: 90%;
+}
+
+.aboutInfo section {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 20px;
+}
+
+.list {
+  padding-left: 50px;
+  list-style-type: disc;
+  line-height: 30px;
+}
