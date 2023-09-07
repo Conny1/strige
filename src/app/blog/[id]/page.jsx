@@ -3,7 +3,24 @@ import styles from "./page.module.css";
 import Image from "next/image";
 import websites from "../../../../public/websites.jpg";
 
-export default function Post() {
+const getPost = async (id) => {
+  const data = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
+
+  return data.json();
+};
+
+// console.log(blogPost);
+export async function generateMetadata({ params }) {
+  const post = await getPost(params.id);
+  return {
+    title: post.title,
+    description: post.desc,
+  };
+}
+
+export default async function Post({ params }) {
+  const blogPost = await getPost(params.id);
+
   return (
     <div className={styles.main}>
       <div className={styles.post}>
@@ -12,17 +29,9 @@ export default function Post() {
         </section>
 
         <section className={styles.textInfo}>
-          <h1>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur,
-            quis? Nobis quasi, porro, eum adipisci dolor totam ea illo
-          </h1>
+          <h1>{blogPost.title}</h1>
 
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet,
-            asperiores rem. Minima nihil, illo culpa similique ex voluptas sunt
-            reprehenderit veritatis ut quod esse maxime? Incidunt blanditiis
-            pariatur reprehenderit omnis?
-          </p>
+          <p>{blogPost.body}</p>
 
           <div className={styles.writer}>
             <section className={styles.writerImageContainer}>

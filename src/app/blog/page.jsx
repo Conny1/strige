@@ -4,28 +4,36 @@ import websites from "../../../public/websites.jpg";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Blog() {
+export default async function Blog() {
+  const getPosts = async () => {
+    const data = await fetch("https://jsonplaceholder.typicode.com/posts");
+
+    return data.json();
+  };
+
+  const blogPosts = await getPosts();
+  // console.log(blogPosts);
   return (
     <div className={styles.main}>
-      <Link href="/blog/1" className={styles.post}>
-        <section className={styles.imageContainer}>
-          <Image className={styles.image} src={websites} alt="" />
-        </section>
+      {blogPosts?.map((post) => {
+        return (
+          <Link
+            key={post.id}
+            href={`/blog/${post?.id}`}
+            className={styles.post}
+          >
+            <section className={styles.imageContainer}>
+              <Image className={styles.image} src={websites} alt="" />
+            </section>
 
-        <section className={styles.textInfo}>
-          <h1>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur,
-            quis? Nobis quasi, porro, eum adipisci dolor totam ea illo{" "}
-          </h1>
+            <section className={styles.textInfo}>
+              <h1>{post?.title}</h1>
 
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet,
-            asperiores rem. Minima nihil, illo culpa similique ex voluptas sunt
-            reprehenderit veritatis ut quod esse maxime? Incidunt blanditiis
-            pariatur reprehenderit omnis?
-          </p>
-        </section>
-      </Link>
+              <p>{post?.body}</p>
+            </section>
+          </Link>
+        );
+      })}
     </div>
   );
 }
